@@ -1,5 +1,7 @@
 # The Treasure School — Management System
 
+LIVE: https://treasure-school-management-2q9e8xymh.vercel.app/
+
 A full-stack school management web application built with **Next.js 14**, **TypeScript**, **Tailwind CSS**, **Prisma ORM**, and **PostgreSQL**.
 
 ---
