@@ -1,0 +1,19 @@
+import { NextRequest, NextResponse } from 'next/server'
+import { getServerSession } from 'next-auth'
+import { authOptions } from '@/lib/auth'
+import { prisma } from '@/lib/prisma'
+
+export async function DELETE(req: NextRequest, { params }: { params: { id: string } }) {
+  const session = await getServerSession(authOptions)
+  if (!session || !['ADMIN', 'TEACHER'].includes(session.user.role)) return NextResponse.json({ error: 'Forbidden' }, { status: 403 })
+
+  const announcement = await prisma.announcement.findUnique({ where: { id: params.id } })
+  if (!announcement) return NextResponse.json({ error: 'Not found' }, { status: 404 })
+
+  if (session.user.role !== 'ADMIN' && announcement.authorId !== session.user.id) {
+    return NextResponse.json({ error: 'Forbidden' }, { status: 403 })
+  }
+
+  await prisma.announcement.delete({ where: { id: params.id } })
+  return NextResponse.json({ message: 'Announcement deleted' })
+}
