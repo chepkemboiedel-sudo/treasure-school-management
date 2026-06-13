@@ -275,6 +275,3 @@ prisma/
 
 This project was designed and built by **Edel Kiprop** ([@chepkemboiedel](https://github.com/chepkemboiedel)) with AI-assisted development powered by **[Claude](https://claude.ai)** by [Anthropic](https://anthropic.com).
 
-The entire system — from database schema design and API routes to UI components, page layouts, and feature implementation — was developed collaboratively through [Claude Code](https://claude.ai/code), Anthropic's AI coding tool.
-
-> Built with Claude Sonnet 4.6 — June 2026
